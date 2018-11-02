@@ -1,0 +1,33 @@
+{
+  "name": "@huehuejs/swapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "cp package.json dist/",
+    "test": "nyc --reporter=html --reporter=text mocha test/**/*.spec.ts",
+    "predeploy": "npm run build",
+    "deploy": "cd dist/ && npm publish --access public",
+    "coverage": "nyc report --reporter=text-lcov | codeclimate-test-reporter"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "chai-rx": "0.0.4",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "@huehuejs/name-convention": "^0.1.0",
+    "@huehuejs/x-data": "file:../huejs-x-data/dist",
+    "cross-fetch": "^2.2.3",
+    "rxjs": "^6.3.3"
+  }
+}
